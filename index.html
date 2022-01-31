@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort List</title>
+    <style>
+        .sortingWrapper {
+            position: absolute;
+            inset: 0;
+            width: 570px;
+            height: 570px;
+            margin: auto;
+        }
+        
+        .sortingOptionWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 50px;
+            border: 1px solid lightgray;
+        }
+        
+        .sortingOptionWrapper button {
+            border: 1px solid lightgray;
+            text-transform: capitalize;
+            font-size: 16px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .listWrapper {
+            height: 400px;
+            overflow: hidden scroll;
+            border: 1px solid lightgray;
+        }
+        
+        .listWrapper ul.unOrderList {
+            margin: 0px;
+            list-style-type: unset;
+            padding: 0px;
+        }
+        
+        .listWrapper ul.unOrderList li {
+            background-color: lightgray;
+            border-top: 3px solid white;
+            padding: 8px;
+            font-family: sans-serif;
+            font-size: 15px;
+        }
+        
+        .filter {
+            border: 1px solid lightgrey;
+            padding: 5px 0px;
+            overflow: hidden;
+        }
+        
+        .filter input {
+            background-color: #d3d3d352;
+            border: 1px solid darkgray;
+            width: 95%;
+            margin: auto;
+            display: block;
+            font-size: 15px;
+            padding: 5px 5px;
+        }
+        
+        .filter a {
+            float: right;
+            text-transform: capitalize;
+            font-family: sans-serif;
+            color: black;
+            text-decoration: unset;
+            border: 1px solid dimgray;
+            background-color: lightgray;
+            padding: 3px 6px;
+            margin: 5px 5px 0px 0px;
+        }
+        
+        .abc {
+            border: 1px solid lightgray;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .abc a {
+            text-decoration: unset;
+            text-transform: capitalize;
+            font-family: sans-serif;
+            padding: 2px 5px;
+            border: 1px solid lightgray;
+            border-top: unset;
+            border-bottom: unset;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sortingWrapper">
+        <div class="sortingOptionWrapper">
+            <button onclick="asc()">Sort ascending</button>
+            <button onclick="desc()">Sort descending</button>
+        </div>
+        <div class="filter">
+            <input type="text" id="searcher" placeholder="Search...">
+            <a href="#" onclick="filter()">filter</a>
+        </div>
+        <div class="abc">
+            <a href="#" onclick="letterWiseFilter(this)">a</a>
+            <a href="#" onclick="letterWiseFilter(this)">b</a>
+            <a href="#" onclick="letterWiseFilter(this)">c</a>
+            <a href="#" onclick="letterWiseFilter(this)">d</a>
+            <a href="#" onclick="letterWiseFilter(this)">e</a>
+            <a href="#" onclick="letterWiseFilter(this)">f</a>
+            <a href="#" onclick="letterWiseFilter(this)">g</a>
+            <a href="#" onclick="letterWiseFilter(this)">h</a>
+            <a href="#" onclick="letterWiseFilter(this)">i</a>
+            <a href="#" onclick="letterWiseFilter(this)">j</a>
+            <a href="#" onclick="letterWiseFilter(this)">k</a>
+            <a href="#" onclick="letterWiseFilter(this)">l</a>
+            <a href="#" onclick="letterWiseFilter(this)">m</a>
+            <a href="#" onclick="letterWiseFilter(this)">n</a>
+            <a href="#" onclick="letterWiseFilter(this)">o</a>
+            <a href="#" onclick="letterWiseFilter(this)">p</a>
+            <a href="#" onclick="letterWiseFilter(this)">q</a>
+            <a href="#" onclick="letterWiseFilter(this)">r</a>
+            <a href="#" onclick="letterWiseFilter(this)">s</a>
+            <a href="#" onclick="letterWiseFilter(this)">t</a>
+            <a href="#" onclick="letterWiseFilter(this)">u</a>
+            <a href="#" onclick="letterWiseFilter(this)">v</a>
+            <a href="#" onclick="letterWiseFilter(this)">x</a>
+            <a href="#" onclick="letterWiseFilter(this)">y</a>
+            <a href="#" onclick="letterWiseFilter(this)">z</a>
+        </div>
+        <div class="listWrapper">
+            <!-- <h1>New Home Grocery List: Paper Items and Cleaning Supplies</h1> -->
+            <ul class="unOrderList">
+                <li>Toilet paper</li>
+                <li>Toilet cleaner</li>
+                <li>Toilet brush</li>
+                <li>Paper towels</li>
+                <li>Napkins</li>
+                <li>Tissues</li>
+                <li>Trash bags</li>
+                <li>Ziploc bags</li>
+                <li>Laundry detergent</li>
+                <li>Stain remover</li>
+                <li>Fabric softener</li>
+                <li>Dishwashing soap</li>
+                <li>Sponges</li>
+                <li>Dishwasher detergent</li>
+                <li>Glass cleaner like Windex</li>
+                <li>Stainless steel cleaner</li>
+                <li>Air freshening spray</li>
+                <li>All-purpose cleaner like Lysol or Mr. Clean</li>
+                <li>Wood floor cleaner (if necessary)</li>
+                <li>Carpet cleaner</li>
+                <li>Swiffer with dry and wet pads (or a mop and a bucket)</li>
+                <li>Plastic wrap</li>
+                <li>Aluminum foil</li>
+                <li>Wax paper</li>
+                <li>Parchment paper</li>
+                <li>Light bulbs</li>
+
+                <li>Apples</li>
+                <li>Oranges</li>
+                <li>Bananas</li>
+                <li>Clementines</li>
+                <li>Lemon</li>
+                <li>Lime</li>
+                <li>Berries</li>
+                <li>Grapes</li>
+                <li>Peaches</li>
+                <li>Plums</li>
+                <li>Avocados</li>
+                <li>Tomatoes</li>
+                <li>Cucumbers</li>
+                <li>Lettuce</li>
+                <li>Spinach</li>
+                <li>Broccoli</li>
+                <li>Asparagus</li>
+                <li>Green beans</li>
+                <li>Celery</li>
+                <li>Carrots</li>
+                <li>Potatoes</li>
+                <li>Peppers</li>
+                <li>Onions</li>
+
+                <li>Eggs</li>
+                <li>Deli meats</li>
+                <li>Chicken</li>
+                <li>Fish</li>
+                <li>Shrimp</li>
+                <li>Steak</li>
+                <li>Ground beef or turkey</li>
+                <li>Hot dogs</li>
+                <li>Ground sausage</li>
+                <li>Pork chops</li>
+
+                <li>Milk</li>
+                <li>Butter</li>
+                <li>Cream cheese</li>
+                <li>Cheese slices</li>
+                <li>Yogurt</li>
+
+                <li>Flour</li>
+                <li>Sugar</li>
+                <li>Baking soda</li>
+                <li>Baking powder</li>
+                <li>Yeast</li>
+                <li>Vanilla extract</li>
+                <li>Shortening</li>
+                <li>Chocolate chips</li>
+                <li>Breadcrumbs</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    function asc() {
+        var list_Wrapper = document.getElementsByClassName("listWrapper")
+        var list = document.getElementsByTagName("li")
+        var local_List = new Array;
+        for (var i = 0; i < list.length; i++) {
+            local_List.push(list[i].innerText)
+        }
+        local_List.sort()
+        for (var i = 0; i < local_List.length; i++) {
+            list[i].innerText = local_List[i]
+        }
+    }
+
+    function desc() {
+        var list_Wrapper = document.getElementsByClassName("listWrapper")
+        var list = document.getElementsByTagName("li")
+        var local_List = new Array;
+        for (var i = 0; i < list.length; i++) {
+            local_List.push(list[i].innerText)
+        }
+        local_List.reverse()
+        for (var i = 0; i < local_List.length; i++) {
+            list[i].innerText = local_List[i]
+        }
+    }
+
+    function filter() {
+        var search_Value = document.getElementById("searcher").value.toUpperCase();
+        var list_Wrapper = document.getElementsByClassName("listWrapper");
+        var list = document.getElementsByTagName("li");
+        var local_list;
+        for (var i = 0; i < list.length; i++) {
+            local_list = list[i].innerText.toUpperCase();
+            if (local_list.indexOf(search_Value) > -1) {
+                list[i].style.display = "block";
+            } else {
+                list[i].style.display = "none";
+            }
+        }
+    }
+
+    function letterWiseFilter(elementText) {
+        var letter = elementText.innerText.toUpperCase()
+        var list = document.getElementsByTagName("li");
+        var local_list;
+        for (var i = 0; i < list.length; i++) {
+            local_list = list[i].innerText.toUpperCase();
+            if (local_list.indexOf(letter) > -1) {
+                list[i].style.display = "block";
+            } else {
+                list[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</html>
